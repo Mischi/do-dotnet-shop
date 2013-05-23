@@ -1,0 +1,15 @@
+﻿<input type="search" placeholder="Search" ng-model="searchText.name" />
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+    </tr>
+    <tr ng-repeat="product in products | filter:searchText | orderBy:'name'">
+        <td>{{product.name}} </td>
+        <td>{{product.desc}}</td>
+        <td>{{product.price | currency}}</td>
+        <td>{{product.category | uppercase}}</td>
+    </tr>
+</table>

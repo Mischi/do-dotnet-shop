@@ -3,37 +3,15 @@
 }
 
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="donetshop.backend">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Do.NET Shop Backend</title>
 </head>
 <body ng-controller="EditProductCtrl">
-    <div>
-        <h1>Do.NET Shop Backend</h1>
-        <form ng-submit="saveProduct(product)">
-            <input type="text" placeholder="Name" ng-model="product.name" />
-            <input type="text" placeholder="Description" ng-model="product.desc" />
-            <input type="text" placeholder="10.50" ng-model="product.price" />
-            <select ng-model="product.category" ng-options="c for c in categories"></select>
-            <button type="submit">Save</button>
-        </form>
-    </div>
-    <input type="search" placeholder="Search" ng-model="searchText.name" />
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Category</th>
-        </tr>
-        <tr ng-repeat="product in products | filter:searchText | orderBy:'name'">
-            <td>{{product.name}} </td>
-            <td>{{product.desc}}</td>
-            <td>{{product.price | currency}}</td>
-            <td>{{product.category | uppercase}}</td>
-        </tr>
-    </table>
+    <div ng-include src="'Templates/ShopBackend/ProductEdit.html'"></div>
+    <div ng-include src="'Templates/ShopBackend/ProductList.html'"></div>
+
     <script src="~/Scripts/angular-1.1.4/angular.min.js"></script>
     <script src="~/Scripts/angular-1.1.4/i18n/angular-locale_de-de.js"></script>
     <script src="~/App/ShopBackend/controllers.js"></script>
