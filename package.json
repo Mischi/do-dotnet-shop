@@ -1,0 +1,22 @@
+{
+  "name": "do-dotnet-shop",
+  "version": "0.0.5",
+  "description": "do-dotnet-shop is demo app to demonstrate angularjs capabilities",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-karma": "~0.4.4",
+    "grunt-contrib-livereload": "~0.1.2",
+    "grunt-regarde": "~0.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mischi/do-dotnet-shop.git"
+  },
+  "author": "Fabian Raetz",
+  "license": "BSD"
+}
