@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>Do.NET Shop Backend</title>
 </head>
-<body ng-init="categories=['Software', 'Hardware', 'Food', 'Drinks']; products=[]">
+<body ng-controller="EditProductCtrl">
     <div>
         <h1>Do.NET Shop Backend</h1>
-        <form ng-submit="products.push(product); product=null;">
+        <form ng-submit="saveProduct(product)">
             <input type="text" placeholder="Name" ng-model="product.name" />
             <input type="text" placeholder="Description" ng-model="product.desc" />
-            <input type="number" placeholder="10.50" ng-model="product.price" />
+            <input type="text" placeholder="10.50" ng-model="product.price" />
             <select ng-model="product.category" ng-options="c for c in categories"></select>
             <button type="submit">Save</button>
         </form>
@@ -34,5 +34,18 @@
         </tr>
     </table>
     <script src="~/Scripts/angular-1.1.4/angular.min.js"></script>
+    <script>
+
+        function EditProductCtrl($scope) {
+            $scope.categories = ['Software', 'Hardware', 'Food', 'Drinks'];
+            $scope.products = [];
+
+            $scope.saveProduct = function(product) {
+                $scope.products.push(product);
+                $scope.product = null;
+            };
+        }
+
+    </script>
 </body>
 </html>
