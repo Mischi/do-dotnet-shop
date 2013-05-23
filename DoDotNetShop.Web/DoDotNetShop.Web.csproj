@@ -118,6 +118,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App\ShopBackend\controllers.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.min.js" />
