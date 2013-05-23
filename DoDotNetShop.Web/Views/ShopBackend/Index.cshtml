@@ -8,13 +8,19 @@
     <meta name="viewport" content="width=device-width" />
     <title>Do.NET Shop Backend</title>
 </head>
-<body ng-controller="EditProductCtrl">
-    <div ng-include src="'Templates/ShopBackend/ProductEdit.html'"></div>
-    <div ng-include src="'Templates/ShopBackend/ProductList.html'"></div>
+<body>
+    <ul>
+        <li>Menü</li>
+        <li><a href="#/">Products</a></li>
+        <li><a href="#/products/">New Products</a></li>
+    </ul>
+
+    <div ng-view></div>
 
     <script src="~/Scripts/angular-1.1.4/angular.min.js"></script>
     <script src="~/Scripts/angular-1.1.4/angular-resource.min.js"></script>
     <script src="~/Scripts/angular-1.1.4/i18n/angular-locale_de-de.js"></script>
+    <script src="~/App/ShopBackend/shopBackend.js"></script>
     <script src="~/App/ShopBackend/controllers.js"></script>
     <script src="~/App/resources.js"></script>
 </body>

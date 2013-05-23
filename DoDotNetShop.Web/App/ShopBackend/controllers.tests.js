@@ -3,16 +3,18 @@
 /*global describe: false */
 /*global beforeEach: false */
 /*global afterEach: false */
+/*global xit: false */
 /*global it: false */
 /*global expect: false */
 /*global module: false */
 /*global inject: false */
 
-describe('EditProductCtrl', function () {
+describe('Controller', function () {
     'use strict';
 
-    var scope, Product, product, httpBackend, productName = 'test';
+    var scope, httpBackend, Product;
 
+    beforeEach(module('donetshop.backend'));
 
     beforeEach(function () {
         this.addMatchers({
@@ -22,62 +24,91 @@ describe('EditProductCtrl', function () {
         });
     });
 
-    beforeEach(module('donetshop.backend'));
-
-    beforeEach(inject(function ($rootScope, $controller, _Product_, $httpBackend) {
-        scope = $rootScope.$new();
-        Product = _Product_;
-        product = new Product({ name: productName });
+    beforeEach(inject(function ($httpBackend, _Product_) {
         httpBackend = $httpBackend;
-        $controller('EditProductCtrl', { $scope: scope });
+        Product = _Product_;
     }));
-
-    beforeEach(function () {
-        httpBackend.expectGET('/api/products').respond(200, []);
-        httpBackend.flush();
-    });
 
     afterEach(function () {
         httpBackend.verifyNoOutstandingExpectation();
         httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('should attach a list of categories to $scope.categories', function () {
-        expect(scope.categories.length).toBeGreaterThan(0);
+
+
+    describe('ProductEditCtrl', function () {
+        
+        var locationSpy, product, productName = 'test';
+
+        beforeEach(inject(function ($rootScope, $controller) {
+            scope = $rootScope.$new();    
+            product = new Product({ name: productName });
+            locationSpy = jasmine.createSpyObj('locationSpy', ['path']);
+            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+        }));
+
+
+
+        it('should attach a list of categories to $scope.categories', function () {
+            expect(scope.categories.length).toBeGreaterThan(0);
+        });
+
+        it('should add product to the products list when saveProduct has been called', function () {
+            //Arrange
+            httpBackend.expectPOST('/api/products').respond(201, {});
+
+            //Act
+            scope.saveProduct(product);
+            httpBackend.flush();
+
+            //Assert
+            //TODO: check that the name is post eq product.name
+        });
+
+        it('should change path to / when saveProduct has been called', function () {
+            //Arrange
+            httpBackend.expectPOST('/api/products').respond(201, {});
+
+            //Act
+            scope.saveProduct(product);
+            httpBackend.flush();
+
+            //Assert
+            expect(locationSpy.path).toHaveBeenCalledWith('/');
+        });
+
+        xit('should reset $scope.product when saveProduct has been called', function () {
+            //Arrange
+            httpBackend.expectPOST('/api/products').respond(201, {});
+
+            //Act
+            scope.saveProduct(product);
+            httpBackend.flush();
+
+            //Assert
+            expect(scope.product instanceof Product).toBe(true);
+            expect(scope.product).toEqualData({});
+        });
+
     });
 
-    it('should attach a empty list to $scope.products', function () {
-        expect(scope.products.length).toBe(0);
-    });
-
-    it('should add product to the products list when saveProduct has been called', function () {
-        //Arrange
-        var id = 'magic-guid';
-        var response = { id: id, name: productName };
-
-        httpBackend.expectPOST('/api/products').respond(201, response);
-
-        //Act
-        scope.saveProduct(product);
-        httpBackend.flush();
 
 
-        //Assert
-        expect(scope.products[0] instanceof Product).toBe(true);
-        expect(scope.products).toEqualData([response]);
-    });
+    describe('ProductListCtrl', function () {
 
-    it('should reset $scope.product when saveProduct has been called', function () {
-        //Arrange
-        httpBackend.expectPOST('/api/products').respond(201, {});
+        beforeEach(inject(function ($rootScope, $controller) {
+            scope = $rootScope.$new();
+            $controller('ProductListCtrl', { $scope: scope });
+        }));
 
-        //Act
-        scope.saveProduct(product);
-        httpBackend.flush();
+        beforeEach(function () {
+            httpBackend.expectGET('/api/products').respond(200, []);
+            httpBackend.flush();
+        });
 
-        //Assert
-        expect(scope.product instanceof Product).toBe(true);
-        expect(scope.product).toEqualData({});
+        it('should attach a empty list to $scope.products', function () {
+            expect(scope.products.length).toBe(0);
+        });
     });
 
 });

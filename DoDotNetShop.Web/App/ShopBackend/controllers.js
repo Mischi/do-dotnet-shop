@@ -1,19 +1,31 @@
-﻿var shopBackend = angular.module('donetshop.backend', ['donetshop.resources']);
+﻿var shopBackend = angular.module('donetshop.backend');
 
-shopBackend.controller('EditProductCtrl', ['$scope', 'Product',
+shopBackend.controller('ProductEditCtrl', ['$scope', '$location', 'Product', 
     
-    function EditProductCtrl($scope, Product) {
+    function ProductEditCtrl($scope, $location, Product) {
         'use strict';
 
         $scope.categories = ['Software', 'Hardware', 'Food', 'Drinks'];
-        $scope.products = Product.query();
         $scope.product = new Product();
 
         $scope.saveProduct = function (product) {
-            $scope.products.push(product);
             product.$save();
-            $scope.product = new Product();
+
+            //navigate to productList
+            $location.path('/');
         };
+    }
+
+]);
+
+
+
+shopBackend.controller('ProductListCtrl', ['$scope', 'Product',
+
+    function ProductListCtrl($scope, Product) {
+        'use strict';
+
+        $scope.products = Product.query();
     }
 
 ]);

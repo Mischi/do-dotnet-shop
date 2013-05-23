@@ -131,6 +131,7 @@
     <Content Include="App\ShopBackend\controllers.js" />
     <Content Include="App\ShopBackend\controllers.tests.js" />
     <Content Include="App\resources.js" />
+    <Content Include="App\ShopBackend\shopBackend.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.min.js" />
@@ -460,6 +461,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\angular-1.1.4\version.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\ShopBackend\shopBackend.tests.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

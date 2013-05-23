@@ -12,12 +12,14 @@ files = [
   'Scripts/angular-1.1.4/angular.js',
   'Scripts/angular-1.1.4/angular-mocks.js',
   'Scripts/angular-1.1.4/angular-resource.js',
+  'App/ShopBackend/shopBackend.js',
   'App/**/*.js',
 ];
 
 
 preprocessors = {
-    '**/App/ShopBackend/controllers.js': 'coverage'
+    '**/App/ShopBackend/controllers.js': 'coverage',
+    '**/App/ShopBackend/shopBackend.js': 'coverage'
 };
 
 
