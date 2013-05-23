@@ -8,14 +8,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>Do.NET Shop Backend</title>
 </head>
-<body>
+<body ng-init="categories=['Software', 'Hardware', 'Food', 'Drinks']; products=[]">
     <div>
         <h1>Do.NET Shop Backend</h1>
-        <form ng-init="categories=['Software', 'Hardware', 'Food', 'Drinks']">
+        <form ng-submit="products.push(product); product=null;">
             <input type="text" placeholder="Name" ng-model="product.name" />
             <input type="text" placeholder="Description" ng-model="product.desc" />
             <input type="number" placeholder="10.50" ng-model="product.price" />
             <select ng-model="product.category" ng-options="c for c in categories"></select>
+            <button type="submit">Save</button>
         </form>
     </div>
     <table>
@@ -25,7 +26,7 @@
             <th>Price</th>
             <th>Category</th>
         </tr>
-        <tr>
+        <tr ng-repeat="product in products">
             <td>{{product.name}} </td>
             <td>{{product.desc}}</td>
             <td>{{product.price}}</td>
