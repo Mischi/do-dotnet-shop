@@ -10,8 +10,8 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   'Scripts/angular-1.1.4/angular.js',
-  'Scripts/angular-1.1.4/angular-resource.js',
   'Scripts/angular-1.1.4/angular-mocks.js',
+  'Scripts/angular-1.1.4/angular-resource.js',
   'App/**/*.js',
 ];
 
