@@ -19,6 +19,7 @@
             <button type="submit">Save</button>
         </form>
     </div>
+    <input type="search" placeholder="Search" ng-model="searchText.name" />
     <table>
         <tr>
             <th>Name</th>
@@ -26,14 +27,15 @@
             <th>Price</th>
             <th>Category</th>
         </tr>
-        <tr ng-repeat="product in products">
+        <tr ng-repeat="product in products | filter:searchText | orderBy:'name'">
             <td>{{product.name}} </td>
             <td>{{product.desc}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.category}}</td>
+            <td>{{product.price | currency}}</td>
+            <td>{{product.category | uppercase}}</td>
         </tr>
     </table>
     <script src="~/Scripts/angular-1.1.4/angular.min.js"></script>
+    <script src="~/Scripts/angular-1.1.4/i18n/angular-locale_de-de.js"></script>
     <script>
 
         function EditProductCtrl($scope) {
