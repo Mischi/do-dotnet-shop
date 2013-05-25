@@ -8,8 +8,9 @@
     </tr>
     <tr ng-repeat="product in products | filter:searchText | orderBy:'name'">
         <td>{{product.name}} </td>
-        <td>{{product.desc}}</td>
+        <td>{{product.description}}</td>
         <td>{{product.price | currency}}</td>
         <td>{{product.category | uppercase}}</td>
+        <td><a href="#/products/{{product.id}}">Edit</a> | <a href="" ng-click="deleteProduct(product)">Delete</a></td>
     </tr>
 </table>

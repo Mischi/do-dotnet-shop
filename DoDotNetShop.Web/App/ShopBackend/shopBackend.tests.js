@@ -1,4 +1,15 @@
-﻿describe('ShopBackend', function () {
+﻿/*global angular: false */
+/*global jasmine: false */
+/*global describe: false */
+/*global beforeEach: false */
+/*global afterEach: false */
+/*global xit: false */
+/*global it: false */
+/*global expect: false */
+/*global module: false */
+/*global inject: false */
+
+describe('ShopBackend', function () {
 	'use strict';
 
 	beforeEach(module('donetshop.backend'));
@@ -23,7 +34,7 @@
 		});
 
 		it('should have /products/new defined', function () {
-			expectCurrentRouteToBe('/products', 'Templates/ShopBackend/ProductEdit.html', 'ProductEditCtrl');
+			expectCurrentRouteToBe('/products/:id', 'Templates/ShopBackend/ProductEdit.html', 'ProductEditCtrl');
 		});
 
 		it('should fallback to / if unknown route was called', function () {

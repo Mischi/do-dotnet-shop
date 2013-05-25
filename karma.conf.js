@@ -19,7 +19,8 @@ files = [
 
 preprocessors = {
     '**/App/ShopBackend/controllers.js': 'coverage',
-    '**/App/ShopBackend/shopBackend.js': 'coverage'
+    '**/App/ShopBackend/shopBackend.js': 'coverage',
+    '**/App/resources.js': 'coverage',
 };
 
 

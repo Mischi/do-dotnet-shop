@@ -2,7 +2,7 @@
     <h1>Do.NET Shop Backend</h1>
     <form ng-submit="saveProduct(product)">
         <input type="text" placeholder="Name" ng-model="product.name" />
-        <input type="text" placeholder="Description" ng-model="product.desc" />
+        <input type="text" placeholder="Description" ng-model="product.description" />
         <input type="text" placeholder="10.50" ng-model="product.price" />
         <select ng-model="product.category" ng-options="c for c in categories"></select>
         <button type="submit">Save</button>

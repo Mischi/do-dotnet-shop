@@ -38,58 +38,97 @@ describe('Controller', function () {
 
     describe('ProductEditCtrl', function () {
         
-        var locationSpy, product, productName = 'test';
+        var $controller, locationSpy, product, productName = 'test';
 
-        beforeEach(inject(function ($rootScope, $controller) {
-            scope = $rootScope.$new();    
+        beforeEach(inject(function ($rootScope, _$controller_) {
+            scope = $rootScope.$new();
+            $controller = _$controller_;
             product = new Product({ name: productName });
             locationSpy = jasmine.createSpyObj('locationSpy', ['path']);
-            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+            
         }));
 
 
 
         it('should attach a list of categories to $scope.categories', function () {
+            //Arrange
+            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+
+            //Assert
             expect(scope.categories.length).toBeGreaterThan(0);
         });
 
-        it('should add product to the products list when saveProduct has been called', function () {
+        it('should initialise $scope.product with a new Product when no id in routes', function () {
             //Arrange
-            httpBackend.expectPOST('/api/products').respond(201, {});
-
-            //Act
-            scope.saveProduct(product);
-            httpBackend.flush();
-
+            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+            
             //Assert
-            //TODO: check that the name is post eq product.name
+            expect(scope.product instanceof Product).toBe(true);
+            expect(scope.product.id).not.toBeDefined();
         });
 
-        it('should change path to / when saveProduct has been called', function () {
+        it('should initialise $scope.product with a new Product when no id in routes', function () {
             //Arrange
-            httpBackend.expectPOST('/api/products').respond(201, {});
-
-            //Act
-            scope.saveProduct(product);
-            httpBackend.flush();
+            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
 
             //Assert
-            expect(locationSpy.path).toHaveBeenCalledWith('/');
+            expect(scope.product instanceof Product).toBe(true);
+            expect(scope.product.id).not.toBeDefined();
         });
 
-        xit('should reset $scope.product when saveProduct has been called', function () {
+        it('should fetch a product when $routeParams.id exists', function () {
             //Arrange
-            httpBackend.expectPOST('/api/products').respond(201, {});
-
+            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy, $routeParams: { id: '1234' } });
+            httpBackend.expectGET('/api/products/1234').respond(200, { id: '1234' });
+            
             //Act
-            scope.saveProduct(product);
             httpBackend.flush();
 
             //Assert
             expect(scope.product instanceof Product).toBe(true);
-            expect(scope.product).toEqualData({});
+            expect(scope.product.id).toBe('1234');
         });
 
+        describe('saveProduct', function () {
+
+            it('should add product to the products list when saveProduct has been called', function () {
+                //Arrange
+                $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+                httpBackend.expectPOST('/api/products').respond(201, { id: '123'});
+
+                //Act
+                scope.saveProduct(product);
+                httpBackend.flush();
+
+                //Assert
+                //TODO: check that the name is post eq product.name
+            });
+
+            it('should update a product when it has been edited', function () {
+                //Arrange
+                $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy, $routeParams: { id: '1234' } });
+                httpBackend.expectGET('/api/products/1234').respond(200, { id: '1234' });
+                httpBackend.flush(); //flush get request
+                httpBackend.expectPUT('/api/products/1234').respond(200, { id: '1234' });
+
+                //Act
+                scope.saveProduct(scope.product);
+                httpBackend.flush();
+            });
+
+            it('should change path to / when saveProduct has been called', function () {
+                //Arrange
+                $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+                httpBackend.expectPOST('/api/products').respond(201, {});
+
+                //Act
+                scope.saveProduct(product);
+                httpBackend.flush();
+
+                //Assert
+                expect(locationSpy.path).toHaveBeenCalledWith('/');
+            });
+        });
     });
 
 
@@ -107,7 +146,26 @@ describe('Controller', function () {
         });
 
         it('should attach a empty list to $scope.products', function () {
+            //Assert
             expect(scope.products.length).toBe(0);
+        });
+
+        it('should delete a product when deleteProduct has been called', function () {
+            //Arrange
+            var deleteMe = new Product({ id: 'DeleteMe', name: 'Tee' }),
+                holdMe = new Product({ id: 'HoldMe', name: 'Bier' });
+
+            scope.products.push(deleteMe, holdMe);
+
+            httpBackend.expectDELETE('/api/products/DeleteMe').respond(200, angular.copy(deleteMe));
+
+            //Act
+            scope.deleteProduct(deleteMe);
+            httpBackend.flush();
+
+            //Assert
+            expect(scope.products.length).toBe(1);
+            expect(scope.products[0]).toEqualData(holdMe);
         });
     });
 

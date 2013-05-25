@@ -11,7 +11,7 @@ shopBackend.config(['$routeProvider',
                 controller: 'ProductListCtrl',
                 templateUrl: 'Templates/ShopBackend/ProductList.html'
             })
-            .when('/products', {
+            .when('/products/:id', {
                 controller: 'ProductEditCtrl',
                 templateUrl: 'Templates/ShopBackend/ProductEdit.html'
             })

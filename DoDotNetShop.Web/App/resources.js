@@ -11,7 +11,9 @@ shopResources.factory('Product', ['$resource',
             //   'query':  {method:'GET', isArray:true},
             //   'remove': {method:'DELETE'},
             //   'delete': {method:'DELETE'} };
-            var Product = $resource('/api/products/:id', { id: "@id" });
+            var Product = $resource('/api/products/:id',
+                                    { id: "@id" },
+                                    { update: { method: 'PUT' } });
 
             return Product;
         }
