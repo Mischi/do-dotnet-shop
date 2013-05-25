@@ -90,6 +90,7 @@ describe('Controller', function () {
         });
 
         describe('saveProduct', function () {
+            var modelState = { 'product.Name': 'with err msg' };
 
             it('should add product to the products list when saveProduct has been called', function () {
                 //Arrange
@@ -102,6 +103,20 @@ describe('Controller', function () {
 
                 //Assert
                 //TODO: check that the name is post eq product.name
+                expect(scope.errors).not.toBeDefined();
+            });
+
+            it('should populate modelState errors on scope when an validation error occured on save', function () {
+                //Arrange
+                $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+                httpBackend.expectPOST('/api/products').respond(400, { modelState: modelState });
+
+                //Act
+                scope.saveProduct(product);
+                httpBackend.flush();
+
+                //Assert
+                expect(scope.errors).toEqualData(modelState);
             });
 
             it('should update a product when it has been edited', function () {
@@ -114,6 +129,24 @@ describe('Controller', function () {
                 //Act
                 scope.saveProduct(scope.product);
                 httpBackend.flush();
+
+                //Assert
+                expect(scope.errors).not.toBeDefined();
+            });
+
+            it('should populate modelState errors on scope when an validation error occured on update', function () {
+                //Arrange
+                $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy, $routeParams: { id: '1234' } });
+                httpBackend.expectGET('/api/products/1234').respond(200, { id: '1234' });
+                httpBackend.flush(); //flush get request
+                httpBackend.expectPUT('/api/products/1234').respond(400, { modelState: modelState });
+
+                //Act
+                scope.saveProduct(scope.product);
+                httpBackend.flush();
+
+                //Assert
+                expect(scope.errors).toEqualData(modelState);
             });
 
             it('should change path to / when saveProduct has been called', function () {
@@ -127,6 +160,7 @@ describe('Controller', function () {
 
                 //Assert
                 expect(locationSpy.path).toHaveBeenCalledWith('/');
+                expect(scope.errors).not.toBeDefined();
             });
         });
     });

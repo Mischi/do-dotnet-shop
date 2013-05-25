@@ -7,4 +7,9 @@
         <select ng-model="product.category" ng-options="c for c in categories"></select>
         <button type="submit">Save</button>
     </form>
+
+    <p ng-repeat="eProp in errors" style="color:red">
+        <span ng-repeat="e in eProp">{{e}}</span>
+    </p>
+
 </div>

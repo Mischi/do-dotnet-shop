@@ -1,22 +1,31 @@
 ﻿var shopBackend = angular.module('donetshop.backend');
 
-shopBackend.controller('ProductEditCtrl', ['$scope', '$location', '$routeParams', 'Product', 
+shopBackend.controller('ProductEditCtrl', ['$scope', '$location', '$routeParams', '$log', 'Product',
     
-    function ProductEditCtrl($scope, $location, $routeParams, Product) {
+    function ProductEditCtrl($scope, $location, $routeParams, $log, Product) {
         'use strict';
 
         $scope.categories = ['Software', 'Hardware', 'Food', 'Drinks'];
         $scope.product = $routeParams.id ? Product.get({ id: $routeParams.id }) : new Product();
 
         $scope.saveProduct = function (product) {
-            if (product.id) {
-                product.$update();
-            } else {
-                product.$save();
+
+            function successHandler() {
+                //navigate to productList
+                $location.path('/');
+            }
+            
+            function errorHandler(res) {
+                $log.error(res);
+
+                $scope.errors = res.data.modelState;
             }
 
-            //navigate to productList
-            $location.path('/');
+            if (product.id) {
+                product.$update().then(successHandler, errorHandler);
+            } else {
+                product.$save().then(successHandler, errorHandler);
+            }       
         };
     }
 
