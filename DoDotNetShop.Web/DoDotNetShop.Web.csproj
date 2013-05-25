@@ -117,11 +117,12 @@
   <ItemGroup>
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShopBackendController.cs" />
+    <Compile Include="Data\ShopDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ShopDbContext.cs" />
+    <Compile Include="Data\ShopDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
