@@ -9,9 +9,9 @@ basePath = 'DoDotNetShop.Web';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'Scripts/angular-1.1.4/angular.js',
-  'Scripts/angular-1.1.4/angular-mocks.js',
-  'Scripts/angular-1.1.4/angular-resource.js',
+  'Scripts/angular-1.1.6-b8ea7f6/angular.js',
+  'Scripts/angular-1.1.6-b8ea7f6/angular-mocks.js',
+  'Scripts/angular-1.1.6-b8ea7f6/angular-resource.js',
   'App/ShopBackend/shopBackend.js',
   'App/**/*.js',
 ];
