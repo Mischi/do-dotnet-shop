@@ -39,6 +39,10 @@
     opacity: 0;
 }
 
+.fadeInOut-leave {
+    height: 0;
+}
+
 
 /*
  Keep in mind that you want to combine both CSS
