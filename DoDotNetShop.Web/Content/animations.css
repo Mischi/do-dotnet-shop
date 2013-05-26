@@ -1,0 +1,51 @@
+﻿.fade-enter {
+    /*
+     The animate-enter CSS class is the event name that you
+     have provided within the ngAnimate attribute.
+    */
+    -moz-transition: 0.8s linear all;
+    -o-transition: 0.8s linear all;
+    -webkit-transition: 0.8s linear all;
+    transition: 0.8s linear all;
+
+    /* The animation preparation code */    
+    opacity: 0;
+}
+
+
+/*
+ Keep in mind that you want to combine both CSS
+ classes together to avoid any CSS-specificity
+ conflicts
+*/
+.fade-enter.fade-enter-active {
+ /* The animation code itself */
+ opacity: 1;
+}
+
+
+
+.fadeInOut-enter, .fadeInOut-leave {
+    /*
+     The animate-enter CSS class is the event name that you
+     have provided within the ngAnimate attribute.
+    */
+    -moz-transition: 0.3s linear all;
+    -o-transition: 0.3s linear all;
+    -webkit-transition: 0.3s linear all;
+    transition: 0.3s linear all;
+
+    /* The animation preparation code */    
+    opacity: 0;
+}
+
+
+/*
+ Keep in mind that you want to combine both CSS
+ classes together to avoid any CSS-specificity
+ conflicts
+*/
+.fadeInOut-enter.fadeInOut-enter-active {
+ /* The animation code itself */
+ opacity: 1;
+}

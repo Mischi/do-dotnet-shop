@@ -1,0 +1,5 @@
+﻿table { width: 100%; }
+th { text-align: left; }
+td { width: 20%; }
+
+.errors { color:red; }

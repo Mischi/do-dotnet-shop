@@ -136,6 +136,8 @@
     <Content Include="App\ShopBackend\Scenarios\shopBackend.e2e.js" />
     <Content Include="App\ShopBackend\Scenarios\shopBackend.scenarios.js" />
     <Content Include="App\ShopBackend\shopBackend.js" />
+    <Content Include="Content\animations.css" />
+    <Content Include="Content\screen.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.min.js" />

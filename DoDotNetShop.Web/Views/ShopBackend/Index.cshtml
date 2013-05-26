@@ -6,6 +6,8 @@
 <html ng-app="@ViewBag.NgApp">
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/animations.css" rel="stylesheet" />
+    <link href="~/Content/screen.css" rel="stylesheet" />
     <title>Do.NET Shop Backend</title>
 </head>
 <body>
@@ -15,10 +17,10 @@
         <li><a href="#/products/">New Product</a></li>
     </ul>
 
-    <div ng-view></div>
+    <div class='view' ng-view ng-animate="'fade'"></div>
 
-    <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular.min.js"></script>
-    <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular-resource.min.js"></script>
+    <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular.js"></script>
+    <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular-resource.js"></script>
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/i18n/angular-locale_de-de.js"></script>
 
     @if (@ViewBag.NgApp.Contains("e2e"))

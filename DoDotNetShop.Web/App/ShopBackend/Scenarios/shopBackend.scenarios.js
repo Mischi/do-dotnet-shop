@@ -10,6 +10,9 @@
 /*global inject: false */
 /*global browser: false */
 /*global element: false */
+/*global input: false */
+/*global select: false */
+/*global repeater: false */
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
 

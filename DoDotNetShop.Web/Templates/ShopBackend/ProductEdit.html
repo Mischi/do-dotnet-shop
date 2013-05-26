@@ -8,7 +8,7 @@
         <button type="submit" ng-disabled="productForm.$invalid || !productForm.$dirty">Save</button>
     </form>
 
-    <p ng-repeat="eProp in errors" style="color:red">
+    <p ng-repeat="eProp in errors" class="errors">
         <span ng-repeat="e in eProp">{{e}}</span>
     </p>
 
