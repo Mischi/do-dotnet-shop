@@ -1,4 +1,4 @@
-﻿var shopBackend = angular.module('donetshop.backend', ['donetshop.resources']);
+﻿var shopBackend = angular.module('donetshop.backend', ['donetshop.resources', '$strap.directives']);
 
 
 shopBackend.config(['$routeProvider',

@@ -49,7 +49,7 @@ describe('ContactManager App', function () {
 
         it('should display the category as UPPERCASE', function () {
             //Assert
-            expect(element('table tr:nth-child(2) td:nth-child(4)').text()).toBe('DRINKS');
+            expect(element('table tr:first-child() td:nth-child(4)').text()).toBe('DRINKS');
         });
 
         it('should filter the list when a searchTerm has been entered', function () {
@@ -62,7 +62,7 @@ describe('ContactManager App', function () {
 
         it('should delete the Pizza product when Pizza Delete Link has been clicked', function () {
             //Act
-            element('table tr:last-child() a:last-child()').click();
+            element('table tr:last-child() a.delete-product').click();
 
             //Assert
             expect(repeater('table tr').count()).toEqual(2);
@@ -71,7 +71,7 @@ describe('ContactManager App', function () {
 
         it('should go to /product/1 when Beer Edit link has been clicked ', function () {
             //Act
-            element('table tr:nth-child(2) a:nth-child(n-1)').click();
+            element('table tr:first-child() a.edit-product').click();
 
             //Assert
             expect(browser().location().url()).toBe('/products/1');

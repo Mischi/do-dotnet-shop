@@ -1,18 +1,32 @@
 ﻿<div>
-    <input type="search" placeholder="Search" ng-model="searchText.name" />
-    <table>
+<table class="table table-hover">
+    <thead>
         <tr>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
             <th>Category</th>
+            <th>Actions</th>
         </tr>
-        <tr ng-animate="'fadeInOut'" ng-repeat="product in products | filter:searchText | orderBy:'name'">
-            <td>{{product.name}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.price | currency}}</td>
-            <td>{{product.category | uppercase}}</td>
-            <td><a href="#/products/{{product.id}}">Edit</a> | <a href="" ng-click="deleteProduct(product)">Delete</a></td>
-        </tr>
-    </table>
-</div>
+    </thead>
+    <tr ng-animate="'fadeInOut'" ng-repeat="product in products | filter:searchText | orderBy:'name'">
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price | currency}}</td>
+        <td>{{product.category | uppercase}}</td>
+        <td>
+            <div class="btn-group">
+                <a class="btn btn-primary" href="#/products/{{product.id}}">Edit</a>
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <!-- dropdown menu links -->
+                    <li><a class="edit-product" href="#/products/{{product.id}}">Edit</a></li>
+                    <li><a class="delete-product" href="" ng-click="deleteProduct(product)">Delete</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+    </div>

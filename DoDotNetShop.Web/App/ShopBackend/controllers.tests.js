@@ -50,6 +50,15 @@ describe('Controller', function () {
 
 
 
+        it('should set $rootScope.showProductSearch to false', function () {
+            //Arrange
+            var rootScope = {};
+            $controller('ProductEditCtrl', { $rootScope: rootScope, $scope: scope, $location: locationSpy });
+
+            //Assert
+            expect(rootScope.showProductSearch).toBe(false);
+        });
+
         it('should attach a list of categories to $scope.categories', function () {
             //Arrange
             $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
@@ -74,6 +83,14 @@ describe('Controller', function () {
             //Assert
             expect(scope.product instanceof Product).toBe(true);
             expect(scope.product.id).not.toBeDefined();
+        });
+
+        it('product.categorys should default to "Software" on new products', function () {
+            //Arrange
+            $controller('ProductEditCtrl', { $scope: scope, $location: locationSpy });
+
+            //Assert
+            expect(scope.product.category).toBe('Software');
         });
 
         it('should fetch a product when $routeParams.id exists', function () {
@@ -169,14 +186,24 @@ describe('Controller', function () {
 
     describe('ProductListCtrl', function () {
 
+        var rootScope;
+
         beforeEach(inject(function ($rootScope, $controller) {
             scope = $rootScope.$new();
-            $controller('ProductListCtrl', { $scope: scope });
+            rootScope = {};
+            $controller('ProductListCtrl', { $rootScope: rootScope, $scope: scope });
         }));
 
         beforeEach(function () {
             httpBackend.expectGET('/api/products').respond(200, []);
             httpBackend.flush();
+        });
+
+
+
+        it('should set $rootScope.showProductSearch to true', function () {
+            //Assert
+            expect(rootScope.showProductSearch).toBe(true);
         });
 
         it('should attach a empty list to $scope.products', function () {

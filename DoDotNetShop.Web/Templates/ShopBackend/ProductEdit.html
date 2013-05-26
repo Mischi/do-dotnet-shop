@@ -1,15 +1,40 @@
 ﻿<div>
-    <h1>Do.NET Shop Backend</h1>
-    <form name="productForm" ng-submit="saveProduct(product)">
-        <input type="text" placeholder="Name" ng-model="product.name" required />
-        <input type="text" placeholder="Description" ng-model="product.description" />
-        <input type="text" placeholder="10.50" ng-model="product.price" />
-        <select ng-model="product.category" ng-options="c for c in categories"></select>
-        <button type="submit" ng-disabled="productForm.$invalid || !productForm.$dirty">Save</button>
-    </form>
+    <form name="productForm" class="form-horizontal" ng-submit="saveProduct(product)">
+        <fieldset>
+            <legend>Create new product</legend>
 
+            <div class="control-group">
+                <label for="name" class="control-label">Name</label>
+                <div class="controls">
+                    <input id="name" type="text" placeholder="Name" ng-model="product.name" required />
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="desc" class="control-label">Description</label>
+                <div class="controls">
+                    <input id="desc" type="text" placeholder="Description" ng-model="product.description" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="price" class="control-label">Price</label>
+                <div class="controls">
+                    <input id="price" type="text" placeholder="10.50" ng-model="product.price" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="cat" class="control-label">Category</label>
+                <div class="controls">
+                    <select id="cat" ng-model="product.category" ng-options="c for c in categories" bs-select></select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn" ng-disabled="productForm.$invalid || !productForm.$dirty">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
     <p ng-repeat="eProp in errors" class="errors">
         <span ng-repeat="e in eProp">{{e}}</span>
     </p>
-
 </div>

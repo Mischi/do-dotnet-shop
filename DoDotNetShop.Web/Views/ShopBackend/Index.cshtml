@@ -5,23 +5,56 @@
 <!DOCTYPE html>
 <html ng-app="@ViewBag.NgApp">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-select.css" rel="stylesheet" />
     <link href="~/Content/animations.css" rel="stylesheet" />
     <link href="~/Content/screen.css" rel="stylesheet" />
     <title>Do.NET Shop Backend</title>
 </head>
 <body>
-    <ul>
-        <li>Menü</li>
-        <li><a href="#/">Products</a></li>
-        <li><a href="#/products/">New Product</a></li>
-    </ul>
+    <div class="navbar" bs-navbar>
+        <div class="navbar-inner">
+            <div class="container">
 
-    <div class='view' ng-view ng-animate="'fade'"></div>
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
 
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand" href="#/">Do.NET Shop Backend</a>
+
+                <form class="navbar-search pull-right" ng-show="showProductSearch">
+                    <input type="search" class="search-query" placeholder="Search" ng-model="searchText.name">
+                </form>
+
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse collapse">
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <ul class="nav">
+                        <li data-match-route="/"><a href="#/">Products</a></li>
+                        <li data-match-route="/products/"><a href="#/products/">New Product</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='container-fluid view' ng-view ng-animate="'fade'"></div>
+
+
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular.js"></script>
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular-resource.js"></script>
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/i18n/angular-locale_de-de.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-select.js"></script>
+    <script src="~/Scripts/angular-strap-0.7.3.js"></script>
 
     @if (@ViewBag.NgApp.Contains("e2e"))
     {

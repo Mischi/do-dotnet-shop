@@ -12,6 +12,7 @@ files = [
   'Scripts/angular-1.1.6-b8ea7f6/angular.js',
   'Scripts/angular-1.1.6-b8ea7f6/angular-mocks.js',
   'Scripts/angular-1.1.6-b8ea7f6/angular-resource.js',
+  'Scripts/angular-strap-0.7.3.js',
   'App/ShopBackend/shopBackend.js',
   'App/**/*.js',
 ];

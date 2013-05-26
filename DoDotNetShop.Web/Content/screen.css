@@ -1,6 +1,1 @@
-﻿table { width: 100%; }
-th { text-align: left; }
-td { width: 20%; }
-
-input.ng-dirty.ng-invalid { border: 1px solid red; }
-.errors { color:red; }
+﻿.errors { color:red; }
