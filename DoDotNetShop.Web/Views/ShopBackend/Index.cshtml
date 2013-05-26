@@ -3,7 +3,7 @@
 }
 
 <!DOCTYPE html>
-<html ng-app="donetshop.backend">
+<html ng-app="@ViewBag.NgApp">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Do.NET Shop Backend</title>
@@ -20,6 +20,14 @@
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular.min.js"></script>
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular-resource.min.js"></script>
     <script src="~/Scripts/angular-1.1.6-b8ea7f6/i18n/angular-locale_de-de.js"></script>
+
+    @if (@ViewBag.NgApp.Contains("e2e"))
+    {
+        <script src="~/Scripts/angular-1.1.6-b8ea7f6/angular-mocks.js"></script>
+        <script src="~/App/ShopBackend/Scenarios/shopBackend.e2e.js"></script>        
+    }
+
+
     <script src="~/App/ShopBackend/shopBackend.js"></script>
     <script src="~/App/ShopBackend/controllers.js"></script>
     <script src="~/App/resources.js"></script>

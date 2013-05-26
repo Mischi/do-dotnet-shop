@@ -13,6 +13,11 @@ namespace DoDotNetShop.Web.Controllers
 
         public ActionResult Index()
         {
+#if SCENARIO
+            ViewBag.NgApp = "donetshop.backend.e2e";
+#else
+            ViewBag.NgApp = "donetshop.backend";
+#endif
             return View();
         }
 

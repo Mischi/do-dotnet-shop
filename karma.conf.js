@@ -26,7 +26,7 @@ preprocessors = {
 
 // list of files to exclude
 exclude = [
-
+    'App/ShopBackend/Scenarios/*.js',
 ];
 
 
@@ -54,12 +54,3 @@ colors = true;
 // level of logging
 // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
 logLevel = LOG_INFO;
-
-
-// Start these browsers, currently available:
-// - Chrome
-// - ChromeCanary
-// - Firefox
-// - Opera
-// - Safari
-// - PhantomJS

@@ -9,7 +9,6 @@ shopBackend.controller('ProductEditCtrl', ['$scope', '$location', '$routeParams'
         $scope.product = $routeParams.id ? Product.get({ id: $routeParams.id }) : new Product();
 
         $scope.saveProduct = function (product) {
-
             function successHandler() {
                 //navigate to productList
                 $location.path('/');
@@ -17,15 +16,11 @@ shopBackend.controller('ProductEditCtrl', ['$scope', '$location', '$routeParams'
             
             function errorHandler(res) {
                 $log.error(res);
-
                 $scope.errors = res.data.modelState;
             }
 
-            if (product.id) {
-                product.$update().then(successHandler, errorHandler);
-            } else {
-                product.$save().then(successHandler, errorHandler);
-            }       
+            var q = product.id ? product.$update() : product.$save();
+            q.then(successHandler, errorHandler);
         };
     }
 

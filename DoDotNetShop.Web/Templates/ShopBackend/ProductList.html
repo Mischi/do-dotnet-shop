@@ -7,7 +7,7 @@
         <th>Category</th>
     </tr>
     <tr ng-repeat="product in products | filter:searchText | orderBy:'name'">
-        <td>{{product.name}} </td>
+        <td>{{product.name}}</td>
         <td>{{product.description}}</td>
         <td>{{product.price | currency}}</td>
         <td>{{product.category | uppercase}}</td>

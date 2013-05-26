@@ -132,6 +132,9 @@
     <Content Include="App\ShopBackend\controllers.js" />
     <Content Include="App\ShopBackend\controllers.tests.js" />
     <Content Include="App\resources.js" />
+    <Content Include="App\ShopBackend\Scenarios\runner.html" />
+    <Content Include="App\ShopBackend\Scenarios\shopBackend.e2e.js" />
+    <Content Include="App\ShopBackend\Scenarios\shopBackend.scenarios.js" />
     <Content Include="App\ShopBackend\shopBackend.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-1.1.4\angular-bootstrap-prettify.js" />
@@ -775,6 +778,15 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Scenario|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SCENARIO</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -787,7 +799,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>17328</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:50219/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

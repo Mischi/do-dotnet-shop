@@ -5,6 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Gruntfile.js = Gruntfile.js
 		karma.conf.js = karma.conf.js
+		karma.e2e.conf.js = karma.e2e.conf.js
 		package.json = package.json
 		README.md = README.md
 	EndProjectSection
@@ -22,12 +23,15 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Scenario|Any CPU = Scenario|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C7B23510-F3F7-452E-B222-3BA9F2E86446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7B23510-F3F7-452E-B222-3BA9F2E86446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7B23510-F3F7-452E-B222-3BA9F2E86446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7B23510-F3F7-452E-B222-3BA9F2E86446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B23510-F3F7-452E-B222-3BA9F2E86446}.Scenario|Any CPU.ActiveCfg = Scenario|Any CPU
+		{C7B23510-F3F7-452E-B222-3BA9F2E86446}.Scenario|Any CPU.Build.0 = Scenario|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
