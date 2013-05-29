@@ -24,7 +24,7 @@ namespace DoDotNetShop.Web
             scripts.Include("~/Scripts/jquery-{version}.js",
                             ANGULARJS_VERSION + "angular.js",
                             ANGULARJS_VERSION + "angular-resource.js",
-                            ANGULARJS_VERSION + "angular-locale_de-de.js",
+                            ANGULARJS_VERSION + "i18n/angular-locale_de-de.js",
                             "~/Scripts/bootstrap.js",
                             "~/Scripts/bootstrap-select.js",
                             "~/Scripts/angular-strap-0.7.3.js");
